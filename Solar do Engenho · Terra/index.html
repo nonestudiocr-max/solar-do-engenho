@@ -1,0 +1,1488 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Solar do Engenho · Terra</title>
+<script>(function(d,w){var r=w.matchMedia&&w.matchMedia("(prefers-reduced-motion: reduce)").matches;var s=w.innerHeight<500&&w.innerWidth>w.innerHeight;if(!r&&!s){d.classList.add("anim");w.setTimeout(function(){if(!w.__solar)d.classList.remove("anim")},5000)}})(document.documentElement,window)</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500&amp;display=swap">
+<style>
+/* Solar do Engenho · terra
+   Base: a referência ORYZO da pasta (fundo nogueira, tipografia creme, uma família só,
+   linhas tracejadas finas), com as fotos e o vídeo do próprio Solar, vivos e claros. */
+:root {
+  --walnut: #100904;
+  --walnut-2: #170e07;
+  --bark: #382416;
+  --cork: #40372e;
+  --drift: #6c5f51;
+  --cream: #ffedd7;
+  --cream-2: rgb(255 237 215 / .74);
+  --cream-3: rgb(255 237 215 / .54);
+  --ember: #dc5000;
+  --paper: #f3e3c8;
+  --ink: #21160c;
+  --ink-2: #66533f;
+  --terra: #9c4a22;
+  --gold: #d6b06c;
+  --sans: 'Albert Sans', 'Helvetica Neue', Arial, sans-serif;
+  --g: clamp(16px, 3.2vw, 48px);
+  --nav-h: 64px;
+  --ease-out: cubic-bezier(.23, 1, .32, 1);
+  --ease-io: cubic-bezier(.77, 0, .175, 1);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--walnut); color: var(--cream);
+  font-family: var(--sans); font-size: 16px; line-height: 1.5; font-weight: 400;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-feature-settings: "kern";
+  overflow-x: clip;
+}
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 90; pointer-events: none; opacity: .05;
+  background: url("assets/tex/grain.webp") 0 0 / 220px 220px; mix-blend-mode: overlay;
+}
+img, video, svg { display: block; max-width: 100%; }
+h1, h2, h3, p, ol, ul, dl, dd, figure { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+[hidden] { display: none !important; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+:focus-visible { outline: 2px solid var(--cream); outline-offset: 4px; border-radius: 2px; }
+::selection { background: var(--cream); color: var(--walnut); }
+
+/* ══ Tipografia: uma família, caixa-alta 500 para títulos e rótulos, texto corrido em 400 ══ */
+.lbl { font-size: 12px; line-height: 1.35; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--cream-3); }
+.h2 { margin-top: 16px; font-size: clamp(28px, 2.7vw, 50px); line-height: .98; font-weight: 500; text-transform: uppercase; text-wrap: balance; }
+.h2--big { font-size: clamp(34px, 5.4vw, 104px); }
+.h1x { margin-top: 16px; font-size: clamp(40px, 5.6vw, 104px); line-height: .98; font-weight: 500; text-transform: uppercase; text-wrap: balance; }
+.bl { font-size: clamp(17px, 1.42vw, 24px); line-height: 1.32; max-width: 34ch; text-wrap: pretty; }
+.at__n { margin-top: 14px; font-size: clamp(36px, 4vw, 76px); line-height: .95; font-weight: 500; text-transform: uppercase; text-wrap: balance; }
+.at__i { margin-bottom: 14px; color: var(--cream-2); font-variant-numeric: tabular-nums; }
+.ln-mask { padding-block: .18em .1em; margin-block: -.18em -.1em; }
+
+/* botão cheio (um por tela) e link sublinhado */
+.btn {
+  display: inline-flex; align-items: center; justify-content: space-between; gap: 22px;
+  min-height: 52px; padding: 0 18px 0 22px; border-radius: 2px;
+  background: var(--cream); color: var(--walnut);
+  font-size: 12.5px; line-height: 1; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+  transition: background-color .2s ease, scale .16s ease-out; will-change: transform;
+}
+.btn svg { width: 15px; height: 15px; flex: none; transition: transform .3s var(--ease-out); }
+.btn:active { scale: .97; }
+.lnk {
+  display: inline-flex; align-items: center; gap: 8px; padding-bottom: 6px;
+  font-size: 12px; line-height: 1; font-weight: 500; letter-spacing: .06em; text-transform: uppercase;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  transition: background-size .35s var(--ease-out), opacity .2s ease;
+}
+.lnk svg { width: 13px; height: 13px; transition: transform .3s var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover { background: #fff8ee; }
+  .btn:hover svg { transform: translateX(3px); }
+  .lnk:hover { background-size: 30% 1px; }
+  .lnk:hover svg { transform: translate(2px, -2px); }
+}
+
+/* ══ Abertura (só com animação) ══ */
+.intro { display: none; }
+.anim .intro {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-content: center; justify-items: center; gap: 20px;
+  background: var(--walnut); padding: var(--g); clip-path: inset(0% 0% 0% 0%);
+}
+.intro__word { font-size: clamp(30px, 3.6vw, 60px); line-height: 1; font-weight: 500; text-transform: uppercase; text-align: center; }
+.intro__line { display: block; width: min(300px, 56vw); height: 1px; background: repeating-linear-gradient(90deg, var(--cream-3) 0 6px, transparent 6px 11px); transform-origin: 0 50%; }
+.intro__k { font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--cream-3); }
+
+/* ══ Barra do topo ══ */
+.skip { position: fixed; left: var(--g); top: 10px; z-index: 120; padding: 12px 16px; background: var(--cream); color: var(--walnut); font-size: 13px; font-weight: 500; transform: translateY(-160%); transition: transform .2s var(--ease-out); }
+.skip:focus { transform: none; }
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
+  height: calc(var(--nav-h) + env(safe-area-inset-top, 0px)); padding: env(safe-area-inset-top, 0px) var(--g) 0;
+}
+.nav::before { content: ""; position: absolute; inset: 0 0 -48px; z-index: -1; pointer-events: none; background: linear-gradient(rgb(16 9 4 / .62), rgb(16 9 4 / 0)); }
+.nav__brand { justify-self: start; font-size: 13px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; padding-block: 8px; }
+.nav__links { display: flex; gap: 30px; }
+.nav__links a { position: relative; padding-block: 8px; font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--cream-2); transition: color .2s ease; }
+.nav__links a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; border-bottom: 1px dashed currentColor; opacity: 0; transform: scaleX(.4); transform-origin: 0 50%; transition: opacity .25s ease, transform .4s var(--ease-out); }
+.nav__links a[aria-current] { color: var(--cream); }
+.nav__links a[aria-current]::after { opacity: 1; transform: none; }
+@media (hover: hover) and (pointer: fine) { .nav__links a:hover { color: var(--cream); } }
+.nav__buy { justify-self: end; }
+.serial {
+  position: fixed; right: 13px; top: 50%; z-index: 45; transform: translateY(-50%) rotate(180deg); writing-mode: vertical-rl;
+  font-size: 10.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--cream-3); pointer-events: none; white-space: nowrap;
+}
+@media (max-width: 1099px) { .serial { display: none; } }
+@media (max-width: 899px) { .nav { grid-template-columns: 1fr auto; } .nav__links { display: none; } }
+
+/* ══ 1 · O dia — leitura simples (sem animação) ══ */
+.dia { position: relative; }
+.dia__video { position: relative; height: 100svh; min-height: 560px; overflow: hidden; background: var(--walnut-2); }
+.dia__poster, .dia__poster img, .dia__vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.dia__vid { opacity: 0; transition: opacity .8s ease; }
+.dia__vid.is-playing { opacity: 1; }
+.dia__scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgb(16 9 4 / 0) 38%, rgb(16 9 4 / .5) 72%, rgb(16 9 4 / .86)); }
+.dia__win { display: none; }
+
+.hero {
+  position: absolute; left: 0; right: 0; top: 0; height: 100svh; min-height: 560px; z-index: 3;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 360px); align-items: end; align-content: end; gap: 32px;
+  padding: 0 var(--g) calc(var(--g) + 4px);
+}
+.hero__h { margin-top: 18px; font-size: clamp(38px, 4.7vw, 92px); line-height: .96; font-weight: 500; text-transform: uppercase; }
+.hero__k { color: var(--cream-2); }
+.hero__card {
+  display: grid; gap: 14px; padding: 22px 22px 18px; border-radius: 12px;
+  background: rgb(16 9 4 / .5); -webkit-backdrop-filter: blur(16px) saturate(1.1); backdrop-filter: blur(16px) saturate(1.1);
+  box-shadow: inset 0 0 0 1px rgb(255 237 215 / .1);
+}
+.hero__lead { font-size: 15px; line-height: 1.45; color: var(--cream-2); padding-bottom: 14px; border-bottom: 1px dashed rgb(255 237 215 / .22); }
+.hero__price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 10px; }
+.hero__price b { font-size: 36px; line-height: 1; font-weight: 500; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.hero__kids { font-size: 14px; color: var(--cream); margin-top: -6px; }
+.hero__card .btn { width: 100%; }
+.hero__when { color: var(--cream-2); font-size: 11px; text-align: center; }
+.vtoggle {
+  position: absolute; right: var(--g); top: calc(var(--nav-h) + 12px); display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 0; font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--cream-2);
+}
+.vtoggle svg { width: 12px; height: 12px; }
+
+.st { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px clamp(24px, 5vw, 80px); align-items: end; max-width: 1400px; margin-inline: auto; padding: clamp(80px, 13vh, 150px) var(--g) 0; }
+.st__b > * + * { margin-top: 22px; }
+.st__b .end__cta { margin-top: 30px; }
+.at { grid-template-columns: minmax(0, .9fr) minmax(0, 1fr); align-items: center; }
+.at .shot { grid-row: span 2; }
+.shot { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 12px; background: var(--walnut-2); max-width: 100%; }
+.shot img { width: 100%; height: 100%; object-fit: cover; }
+.at .st__b { align-self: start; }
+
+.list { position: relative; max-width: 1400px; margin-inline: auto; padding: clamp(80px, 13vh, 150px) var(--g) 0; }
+.list__side { display: none; }
+.list__track { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px clamp(24px, 5vw, 80px); }
+.list__gl { padding-bottom: 14px; border-bottom: 1px dashed var(--cork); }
+.list__li { display: grid; grid-template-columns: 34px minmax(0, 1fr); column-gap: 10px; padding-block: 18px; border-bottom: 1px dashed var(--cork); }
+.list__no { grid-row: span 2; padding-top: .55em; font-size: 12px; font-weight: 500; letter-spacing: .06em; color: var(--cream-3); font-variant-numeric: tabular-nums; }
+.list__n { font-size: clamp(26px, 2.6vw, 44px); line-height: .95; font-weight: 500; text-transform: uppercase; }
+.list__d { margin-top: 8px; font-size: 16px; line-height: 1.45; color: var(--cream-2); max-width: 44ch; }
+.st--end { padding-bottom: clamp(80px, 13vh, 150px); }
+
+/* ══ 2 · Onde fica e o ingresso — leitura simples ══ */
+.lugar { position: relative; }
+.lugar__photo { position: relative; height: 100svh; min-height: 560px; overflow: hidden; background: var(--walnut-2); }
+.lugar__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.lugar__scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgb(16 9 4 / .1) 30%, rgb(16 9 4 / .78)); pointer-events: none; }
+.lugar__veil { position: absolute; inset: 0; background: var(--walnut); opacity: 0; pointer-events: none; }
+.lugar__spot { display: none; }
+.anim .lugar__spot { display: block; position: absolute; left: 50%; top: 52%; width: 110vmin; height: 80vmin; margin: -40vmin 0 0 -55vmin; border-radius: 50%; pointer-events: none; opacity: 0; background: radial-gradient(closest-side, rgb(255 214 160 / .13), rgb(255 214 160 / .05) 55%, rgb(255 214 160 / 0)); }
+.st--onde { position: absolute; left: 0; right: 0; top: 0; height: 100svh; min-height: 560px; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; max-width: none; padding: 0 var(--g) calc(var(--g) + 8px); }
+.st--onde .bl { margin-top: 12px; }
+.links { display: flex; flex-wrap: wrap; gap: 14px 28px; margin-top: 26px; }
+.st--faq { align-items: start; }
+.faq { display: grid; gap: 28px; }
+.faq__q dt { margin-bottom: 10px; color: var(--cream-2); }
+.faq__q dd { font-size: clamp(17px, 1.3vw, 22px); line-height: 1.35; max-width: 34ch; }
+.st--offer { display: block; text-align: left; }
+.st--offer .bl { margin-top: 16px; }
+.slot { padding: 48px var(--g) 24px; }
+.notes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; max-width: 1400px; margin: 0 auto; padding: 18px var(--g) clamp(80px, 12vh, 120px); }
+.notes li { padding-top: 14px; border-top: 1px dashed var(--cork); font-size: 14px; line-height: 1.45; color: var(--cream-2); }
+.notes b { font-weight: 500; color: var(--cream); }
+
+/* ══ Com animação: telas presas ══ */
+.anim .dia { height: 100svh; overflow: hidden; }
+.anim .dia__video { position: absolute; inset: 0; height: auto; min-height: 0; will-change: clip-path; }
+.anim .dia__vid { will-change: transform; }
+.anim .hero { height: 100%; min-height: 0; }
+.anim .st, .anim .hero { opacity: 0; pointer-events: none; }
+.anim .st { position: absolute; inset: 0; display: block; max-width: none; margin: 0; padding: 0; z-index: 3; }
+.anim :is(.st, .hero).is-on :is(a, button) { pointer-events: auto; }
+.anim .st__a, .anim .st__b { position: absolute; }
+.anim .dia__win { display: block; position: absolute; left: var(--wx); top: var(--wy); width: var(--ww); height: var(--wh); overflow: hidden; border-radius: 12px; z-index: 2; pointer-events: none; }
+.anim .dia__win .shot { position: absolute; inset: 0; aspect-ratio: auto; border-radius: 0; clip-path: inset(100% 0 0 0); }
+.anim .dia__win .shot img { will-change: transform; }
+.anim .at .shot { display: none; }
+.anim .dia__win .shot { display: block; }
+
+/* três colunas: título à esquerda, janela no meio, texto à direita */
+.anim.m3 .dia .st__a { left: var(--g); top: var(--wy); width: var(--colw); }
+.anim.m3 .dia .st__b { right: var(--g); bottom: var(--wb); width: var(--colw); }
+/* duas colunas: janela à direita, textos empilhados à esquerda */
+.anim.m2 .dia .st__a { left: var(--g); top: var(--wy); width: var(--colw); }
+.anim.m2 .dia .st__b { left: var(--g); bottom: var(--wb); width: var(--colw); }
+/* celular: janela em cima, texto embaixo */
+.anim.m1 .dia .st { display: flex; flex-direction: column; align-items: stretch; gap: 16px; padding: calc(var(--wy) + var(--wh) + 22px) var(--g) 0; }
+.anim.m1 .dia .st__a, .anim.m1 .dia .st__b { position: static; width: auto; }
+.anim.m1 .st__b > * + * { margin-top: 14px; }
+.anim.m1 .st__b .end__cta { margin-top: 18px; }
+.anim.m1 .h2 { font-size: clamp(26px, 7.4vw, 34px); margin-top: 10px; }
+.anim.m1 .at__n { font-size: clamp(34px, 10vw, 48px); margin-top: 10px; }
+.anim.m1 .bl { font-size: 16px; max-width: none; }
+.anim.m1 .at__i { margin-bottom: 0; }
+.anim.m1 .at .st__b { display: flex; flex-direction: column-reverse; gap: 12px; }
+.anim.m1 .at .st__b > * + * { margin-top: 0; }
+
+/* lista das seis atrações sem foto */
+.anim .list { position: absolute; inset: 0; max-width: none; margin: 0; padding: 0; opacity: 0; z-index: 3; pointer-events: none; }
+.anim .list__track { position: absolute; left: var(--g); top: 50%; display: block; width: var(--lw); will-change: transform; }
+.anim .list__g { display: contents; }
+.anim .list__gl, .anim .list__d { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.anim .list__li { display: flex; align-items: flex-start; gap: 18px; padding: 0; border: 0; height: var(--lh); }
+.anim .list__no { padding-top: .9em; width: 2.2em; flex: none; color: var(--cream-3); transition: color .45s ease; }
+.anim .list__n { font-size: var(--lf); line-height: 1; color: var(--drift); transition: color .45s ease; white-space: nowrap; }
+.anim .list__li.is-on .list__n { color: var(--cream); }
+.anim .list__li.is-on .list__no { color: var(--cream); }
+.anim .list__side { display: block; position: absolute; }
+.anim.m3 .list__side { right: var(--g); bottom: var(--wb); width: var(--colw); }
+.anim.m2 .list__side, .anim.m1 .list__side { left: var(--g); right: var(--g); bottom: calc(var(--g) + 8px + env(safe-area-inset-bottom, 0px)); }
+.list__side .list__si { margin-top: 10px; color: var(--cream-2); font-variant-numeric: tabular-nums; }
+.list__side .bl { margin-top: 18px; }
+.anim.m1 .list__side .bl { font-size: 16px; margin-top: 10px; }
+
+.anim .dia .st--end .st__a { width: calc(var(--colw) + var(--gap) + var(--ww)); }
+.anim.m3 .st--end .st__a, .anim.m2 .st--end .st__a { top: 50%; transform: translateY(-58%); }
+.anim.m1 .dia .st--end { justify-content: center; padding-top: calc(var(--nav-h) + 20px); }
+.anim.m1 .dia .st--end .st__a { width: auto; }
+.anim.m1 .st--end .h2--big { font-size: clamp(36px, 11vw, 54px); }
+
+/* onde fica + ingresso */
+.anim .lugar { height: 100svh; overflow: hidden; }
+.anim .lugar__photo { position: absolute; inset: 0; height: auto; min-height: 0; }
+.anim .lugar__photo img { will-change: transform; transform-origin: 50% 60%; }
+.anim .lugar .st { z-index: 3; }
+.anim .st--onde { position: absolute; inset: 0; height: auto; min-height: 0; display: flex; padding: 0 var(--g) calc(var(--g) + 8px); }
+.anim .st--faq .st__a { left: var(--g); top: calc(var(--nav-h) + 26px); width: min(560px, 46vw); }
+.anim .faq { position: absolute; left: var(--g); right: var(--g); bottom: calc(var(--g) + 8px); grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 var(--gap); align-items: end; }
+.anim .faq__q:last-child { justify-self: end; width: min(100%, 34ch); }
+.anim .st--offer { padding: calc(var(--nav-h) + 22px) var(--g) 0; }
+.anim .st--offer .h2 { max-width: 16ch; }
+.anim .st--offer .bl { max-width: 40ch; }
+.anim .slot { position: absolute; left: 0; right: 0; top: var(--slot-t, 30%); bottom: var(--slot-b, 120px); padding: 0; }
+.anim .notes { position: absolute; left: 0; right: 0; bottom: 0; padding: 0 var(--g) calc(var(--g) + 4px + env(safe-area-inset-bottom, 0px)); opacity: 0; max-width: none; }
+.anim.m1 .st--faq .st__a { width: auto; right: var(--g); }
+.anim.m1 .faq { grid-template-columns: 1fr; gap: 18px; }
+.anim.m1 .faq__q:last-child { justify-self: start; }
+.anim.m1 .faq__q dd { font-size: 15px; }
+.anim.m1 .st--offer .h2 { font-size: clamp(26px, 7.6vw, 34px); }
+.anim.m1 .st--offer .bl { font-size: 15px; margin-top: 10px; }
+.anim.m1 .notes { grid-template-columns: 1fr; gap: 6px; }
+.anim.m1 .notes li { padding-top: 8px; font-size: 12px; }
+.anim.m1 .notes li:not(:first-child) { display: none; }
+
+/* ══ O ingresso em 3D (estrutura da versão anterior, de que você gostou) ══ */
+.stage { position: fixed; inset: 0; z-index: 40; pointer-events: none; perspective: 1800px; perspective-origin: 50% 48%; }
+.ticket-shadow {
+  position: absolute; left: 50%; top: 50%; width: 560px; height: 90px; margin: -45px 0 0 -280px; border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / .75), rgb(0 0 0 / 0)); filter: blur(12px); opacity: 0; will-change: transform, opacity;
+}
+.ticket {
+  --tw: 540px; --th: calc(var(--tw) / 1.72); --dl: 3px; --db: 6px; --r: 12px; --shine: .5;
+  position: absolute; left: 50%; top: 50%; width: var(--tw); height: var(--th);
+  margin: calc(var(--th) / -2) 0 0 calc(var(--tw) / -2);
+  font-size: calc(var(--tw) / 28); line-height: 1.3; color: var(--ink); transform-style: preserve-3d; pointer-events: none;
+}
+.ticket :is(.in-buy, .ticket-hit) { pointer-events: auto; }
+@media (max-width: 639px) { .ticket { --tw: min(90vw, 420px); font-size: calc(var(--tw) / 22.5); } .ticket-shadow { width: 340px; margin-left: -170px; } }
+@media (min-width: 640px) and (max-width: 899px) { .ticket { --tw: min(66vw, 520px); } }
+.ticket :is(.t-enter, .t-tilt, .t-float, .t-spin, .slab) { position: absolute; inset: 0; transform-style: preserve-3d; }
+.face { position: absolute; inset: 0; overflow: hidden; border-radius: var(--r); -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.edge { position: absolute; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.edge--r, .edge--l { top: var(--r); height: calc(100% - var(--r) * 2); }
+.edge--t, .edge--b { left: var(--r); width: calc(100% - var(--r) * 2); }
+.base .edge { --z: calc(var(--db) / -2); background: repeating-linear-gradient(90deg, rgb(214 176 108 / .24) 0 1px, transparent 1px 2px), #2a190d; }
+.base .edge--t, .base .edge--b { background: repeating-linear-gradient(180deg, rgb(214 176 108 / .24) 0 1px, transparent 1px 2px), #2a190d; }
+.base .edge--r, .base .edge--l { width: var(--db); }
+.base .edge--t, .base .edge--b { height: var(--db); }
+.base .edge--r { left: calc(100% - var(--db) / 2); }
+.base .edge--l { left: calc(var(--db) / -2); }
+.base .edge--t { top: calc(var(--db) / -2); }
+.base .edge--b { top: calc(100% - var(--db) / 2); }
+.lid .edge { --z: calc(var(--dl) / 2); background: #a8834a; }
+.lid .edge--r, .lid .edge--l { width: var(--dl); }
+.lid .edge--t, .lid .edge--b { height: var(--dl); }
+.lid .edge--r { left: calc(100% - var(--dl) / 2); }
+.lid .edge--l { left: calc(var(--dl) / -2); }
+.lid .edge--t { top: calc(var(--dl) / -2); }
+.lid .edge--b { top: calc(100% - var(--dl) / 2); }
+.edge--r { transform: translateZ(var(--z)) rotateY(90deg); }
+.edge--l { transform: translateZ(var(--z)) rotateY(-90deg); }
+.edge--t { transform: translateZ(var(--z)) rotateX(90deg); }
+.edge--b { transform: translateZ(var(--z)) rotateX(-90deg); }
+.base .face--front { transform: translateZ(0); }
+.base .face--back { transform: translateZ(calc(var(--db) * -1)) rotateY(180deg); }
+.lid { transform-origin: 50% 0 0; }
+.lid .face--front { transform: translateZ(var(--dl)); }
+.lid .face--back { transform: translateZ(.6px) rotateX(180deg); }
+.ticket.is-wide .lid .face--back { transform: translateZ(.6px) rotateY(180deg); }
+
+/* capa cor de tabaco com o nome em folha de ouro */
+.cover, .map {
+  color: var(--gold);
+  background:
+    radial-gradient(130% 100% at 20% 0%, rgb(255 222 170 / .1), transparent 60%),
+    url("assets/tex/papel.webp") 0 0 / 240px 240px,
+    #3b2413;
+  background-blend-mode: normal, soft-light, normal;
+  box-shadow: inset 0 0 0 1px rgb(214 176 108 / .4), inset 0 0 0 8px #3b2413, inset 0 0 0 9px rgb(214 176 108 / .18), inset 0 0 3em rgb(0 0 0 / .45);
+}
+.foil {
+  background: linear-gradient(100deg, #8c682c 0%, #e2bf7a 28%, #fff1d2 calc(18% + var(--shine) * 64%), #cfa45c 72%, #85602a 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.cover__main { position: absolute; inset: 0 24% 0 0; display: grid; justify-items: center; align-content: center; gap: .55em; text-align: center; }
+.cover__k { display: flex; align-items: center; gap: .8em; font-size: .56em; font-weight: 500; letter-spacing: .32em; padding-inline-start: .32em; text-transform: uppercase; color: rgb(214 176 108 / .85); }
+.cover__k::before, .cover__k::after { content: ""; width: 2.4em; height: 1px; background: currentColor; opacity: .55; }
+.cover__name { font-size: 2.7em; line-height: .86; font-weight: 500; text-transform: uppercase; letter-spacing: .01em; }
+.cover__place { font-size: .5em; font-weight: 500; letter-spacing: .3em; padding-inline-start: .3em; text-transform: uppercase; color: rgb(214 176 108 / .7); }
+.cover__stub { position: absolute; top: 0; right: 0; bottom: 0; width: 24%; display: grid; place-items: center; border-inline-start: 1.5px dashed rgb(214 176 108 / .36); background: rgb(214 176 108 / .03); }
+.cover__stub-in { display: grid; justify-items: center; gap: .5em; transform: rotate(-90deg); white-space: nowrap; }
+.cover__word { font-size: .8em; font-weight: 500; letter-spacing: .5em; padding-inline-start: .5em; text-transform: uppercase; color: #e0bd78; }
+.cover__no { font-size: .52em; font-weight: 500; letter-spacing: .3em; color: rgb(214 176 108 / .6); font-variant-numeric: tabular-nums; }
+.sheen {
+  position: absolute; inset: 0; z-index: 4; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(110deg, transparent 32%, rgb(255 236 200 / .15) 46%, rgb(255 236 200 / .05) 54%, transparent 66%);
+  background-size: 250% 100%; background-position: calc(var(--shine) * 100%) 0;
+}
+.map__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map__road { fill: none; stroke: rgb(214 176 108 / .7); stroke-width: 2.4; stroke-linecap: round; }
+.map__road--thin { stroke-width: 1.2; stroke: rgb(214 176 108 / .35); }
+.map__ticks path { fill: none; stroke: rgb(214 176 108 / .45); stroke-width: 1.2; }
+.map__dot { fill: #e0bd78; }
+.map__ring { fill: none; stroke: rgb(224 189 120 / .55); stroke-width: 1.2; }
+.map__road-name { position: absolute; left: 7%; bottom: 14%; font-size: .6em; font-weight: 500; letter-spacing: .3em; color: rgb(214 176 108 / .62); transform: rotate(-12deg); transform-origin: 0 100%; }
+.map__here { position: absolute; right: 8%; bottom: 13%; display: grid; justify-items: end; gap: .35em; text-align: right; }
+.map__here b { font-size: 1.12em; font-weight: 500; line-height: 1; text-transform: uppercase; color: #ecd09a; }
+.map__here span { font-size: .5em; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: rgb(214 176 108 / .72); }
+.map__corner { position: absolute; left: 7%; top: 12%; font-size: .5em; font-weight: 500; letter-spacing: .3em; text-transform: uppercase; color: rgb(214 176 108 / .55); }
+
+/* miolo: papel creme, tinta escura */
+.inside-a, .inside-b {
+  background:
+    radial-gradient(120% 110% at 28% 0%, rgb(255 255 255 / .4), transparent 58%),
+    url("assets/tex/papel.webp") 0 0 / 240px 240px,
+    var(--paper);
+  background-blend-mode: normal, soft-light, normal;
+  box-shadow: inset 0 0 0 1px rgb(33 22 12 / .08), inset 0 0 2.4em rgb(140 96 40 / .14);
+}
+.in-l { font-size: .54em; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--terra); }
+.inside-a { display: grid; align-content: center; padding: 1.25em 1.5em; }
+.inside-a .in-l { margin-bottom: .75em; }
+.menu li { padding-block: .55em; border-top: 1.5px dashed rgb(33 22 12 / .16); }
+.menu li:first-child { border-top: 0; padding-top: 0; }
+.mi { display: flex; align-items: baseline; justify-content: space-between; gap: .8em; }
+.mi b { font-size: .86em; font-weight: 500; line-height: 1.15; letter-spacing: .02em; text-transform: uppercase; color: var(--ink); }
+.mi span { font-size: .52em; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--terra); white-space: nowrap; }
+.md { margin-top: .25em; font-size: .7em; line-height: 1.35; color: var(--ink-2); }
+.in-more { margin-top: .5em; padding-top: .65em; border-top: 1.5px dashed rgb(33 22 12 / .16); font-size: .56em; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--ink); }
+.inside-b { display: grid; grid-template-columns: minmax(0, 1fr) 27%; }
+.in-price { display: grid; align-content: center; justify-items: start; padding: 1.1em 1em 1.1em 1.5em; }
+.in-price .price { margin-top: .12em; font-size: 4em; line-height: .9; font-weight: 500; color: var(--ink); white-space: nowrap; font-variant-numeric: tabular-nums lining-nums; }
+.in-price .price small { font-size: .24em; font-weight: 500; vertical-align: 2.2em; margin-right: .3em; letter-spacing: .06em; color: var(--ink-2); }
+.in-price .per { margin-top: .4em; font-size: .64em; color: var(--ink-2); }
+.kids { display: flex; align-items: center; gap: .5em; margin-top: .55em; font-size: .7em; font-weight: 500; color: var(--ink); }
+.kids::before { content: ""; width: .48em; height: .48em; flex: none; border-radius: 50%; background: var(--terra); }
+.tbtn {
+  position: relative; overflow: hidden; isolation: isolate; display: inline-flex; align-items: center; gap: .9em;
+  margin-top: .95em; min-height: 2.9em; padding: 0 1.1em; border-radius: .22em;
+  background: var(--walnut); color: var(--cream); font-size: .52em; font-weight: 500; line-height: 1.2; letter-spacing: .08em; text-transform: uppercase;
+  transition: scale .16s ease-out;
+}
+.tbtn svg { width: 1.3em; height: 1.3em; flex: none; }
+.tbtn:active { scale: .97; }
+.tbtn::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(105deg, transparent 30%, rgb(255 237 215 / .22) 50%, transparent 70%); transform: translateX(var(--sw, -130%)); }
+.in-stub { display: grid; align-content: start; justify-items: center; gap: .7em; padding: 1.5em .5em 1em; text-align: center; border-inline-start: 1.5px dashed rgb(33 22 12 / .22); background: rgb(156 74 34 / .05); }
+.in-days { font-size: .5em; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; line-height: 1.8; color: var(--ink-2); }
+.in-hours { font-size: 1.45em; font-weight: 500; line-height: 1; color: var(--ink); }
+.in-hours small { display: block; margin-block: .3em; font-size: .38em; letter-spacing: .14em; text-transform: uppercase; color: var(--terra); }
+.seal {
+  position: absolute; right: 2.6%; bottom: 5%; z-index: 3; width: 4.6em; height: 4.6em; pointer-events: none; transform: rotate(-12deg);
+  filter: drop-shadow(0 1px 0 rgb(255 255 255 / .45)) drop-shadow(0 .15em .25em rgb(90 55 10 / .35));
+}
+.seal text { font-family: var(--sans); font-weight: 500; }
+.shade { position: absolute; inset: 0; z-index: 5; pointer-events: none; opacity: 0; border-radius: inherit; }
+.shade--base { background: linear-gradient(90deg, rgb(30 18 6 / .6), rgb(30 18 6 / .2) 60%, rgb(30 18 6 / .05)); }
+.shade--lid { background: linear-gradient(270deg, rgb(30 18 6 / .65), rgb(30 18 6 / .25) 70%, rgb(30 18 6 / .12)); }
+.shade--cover { background: linear-gradient(90deg, rgb(0 0 0 / .05), rgb(0 0 0 / .5)); }
+.ticket:not(.is-wide) .shade--base { background: linear-gradient(180deg, rgb(30 18 6 / .6), rgb(30 18 6 / .2) 60%, rgb(30 18 6 / .05)); }
+.ticket:not(.is-wide) .shade--lid { background: linear-gradient(0deg, rgb(30 18 6 / .65), rgb(30 18 6 / .25) 70%, rgb(30 18 6 / .12)); }
+.inside-a, .inside-b { transition: border-radius .35s var(--ease-out); }
+.ticket.is-open.is-wide .inside-a { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.ticket.is-open.is-wide .inside-b { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.ticket.is-open:not(.is-wide) .inside-a { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.ticket.is-open:not(.is-wide) .inside-b { border-top-left-radius: 0; border-top-right-radius: 0; }
+.inside-a::after, .inside-b::after { content: ""; position: absolute; pointer-events: none; z-index: 2; }
+.ticket.is-wide .inside-a::after { top: 0; bottom: 0; right: 0; width: 2em; background: linear-gradient(270deg, rgb(90 60 25 / .2), transparent); }
+.ticket.is-wide .inside-b::after { top: 0; bottom: 0; left: 0; width: 2em; background: linear-gradient(90deg, rgb(90 60 25 / .2), transparent); }
+.ticket:not(.is-wide) .inside-a::after { left: 0; right: 0; bottom: 0; height: 1.5em; background: linear-gradient(0deg, rgb(90 60 25 / .18), transparent); }
+.ticket:not(.is-wide) .inside-b::after { left: 0; right: 0; top: 0; height: 1.5em; background: linear-gradient(180deg, rgb(90 60 25 / .18), transparent); }
+@media (max-width: 639px) {
+  .cover__name { font-size: 2.3em; }
+  .md { display: none; }
+  .menu li { padding-block: .42em; }
+  .inside-a { padding: 1em 1.2em; }
+  .in-price { padding: .9em .8em .9em 1.2em; }
+  .in-price .price { font-size: 3.4em; }
+  .seal { width: 4em; height: 4em; }
+  .tbtn { font-size: .5em; }
+}
+.ticket-hit { position: absolute; inset: 0; z-index: 2; border-radius: var(--r); cursor: pointer; transform: translateZ(14px); }
+.ticket.is-open .ticket-hit { display: none; }
+/* sem animação: o ingresso aberto, de pé */
+.ticket.is-static { position: relative; left: auto; top: auto; margin: var(--th) auto 0; }
+.ticket.is-static .lid { transform: rotateX(180deg); }
+
+/* ══ Cursor (só no mouse) ══ */
+.cursor {
+  position: fixed; left: 0; top: 0; z-index: 60; width: 78px; height: 78px; margin: -39px 0 0 -39px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--cream); color: var(--walnut);
+  font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; pointer-events: none; opacity: 0;
+}
+
+/* ══ Rodapé ══ */
+.ft { position: relative; z-index: 2; overflow: hidden; padding: clamp(110px, 18vh, 200px) var(--g) 26px; background: var(--walnut); border-top: 1px dashed var(--cork); }
+.ft__top { display: grid; justify-items: start; gap: 0; }
+.ft__h { max-width: 13ch; margin-bottom: 36px; }
+.ft__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: clamp(80px, 12vh, 130px); padding-top: 22px; border-top: 1px dashed var(--cork); }
+.ft__grid p:not(.lbl) { margin-top: 12px; font-size: 16px; line-height: 1.55; color: var(--cream-2); }
+.ft__grid a { background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat; transition: color .2s ease; }
+@media (hover: hover) and (pointer: fine) { .ft__grid a:hover { color: var(--cream); } }
+.mail { overflow-wrap: anywhere; }
+.ft__word { margin-top: clamp(64px, 10vh, 110px); font-size: calc((100vw - 2 * var(--g)) * .097); line-height: .8; font-weight: 500; text-transform: uppercase; white-space: nowrap; color: var(--cream); }
+.ft__base { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; margin-top: 22px; padding-top: 16px; border-top: 1px dashed var(--cork); font-size: 12px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--cream-3); }
+.ft__credit b { font-weight: 500; color: var(--ember); }
+
+/* ══ Telas menores (leitura simples) ══ */
+@media (max-width: 899px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .hero__card { max-width: 420px; }
+  .st, .at { grid-template-columns: minmax(0, 1fr); }
+  .at .shot { grid-row: auto; max-width: 520px; }
+  .list__track { grid-template-columns: minmax(0, 1fr); }
+  .notes { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .ft__grid { grid-template-columns: minmax(0, 1fr); gap: 26px; }
+}
+@media (max-width: 699px) {
+  :root { --nav-h: 56px; }
+  .hero__h { font-size: clamp(28px, 7.9vw, 40px); margin-top: 12px; }
+  .dia__scrim { background: linear-gradient(180deg, rgb(16 9 4 / 0) 28%, rgb(16 9 4 / .62) 56%, rgb(16 9 4 / .94)); }
+  .hero { gap: 16px; }
+  .hero__kids { margin-top: -4px; }
+  .hero__lead { display: none; }
+  .hero__card { padding: 0; gap: 12px; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
+  .hero__price b { font-size: 30px; }
+  .nav__buy { font-size: 11px; }
+  .ft__h { font-size: clamp(34px, 10vw, 48px); }
+}
+
+</style>
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M2.5 8h10.5M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></symbol>
+  <symbol id="i-out" viewBox="0 0 16 16"><path d="M4.5 11.5l7-7M6 4.5h5.5V10" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></symbol>
+  <symbol id="i-play" viewBox="0 0 16 16"><path d="M5 3.5v9l7.5-4.5z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 16 16"><path d="M4.5 3.5h2.4v9H4.5zM9.1 3.5h2.4v9H9.1z" fill="currentColor"/></symbol>
+</svg>
+
+<a class="skip" href="#ingresso" data-go="ingresso">Pular para o ingresso</a>
+
+<div class="intro" aria-hidden="true" data-intro>
+  <p class="intro__word" data-intro-word>Solar do Engenho</p>
+  <span class="intro__line" data-intro-line></span>
+  <p class="intro__k" data-intro-k>Day use · Sete Lagoas, MG</p>
+</div>
+
+<header class="nav" data-nav>
+  <a class="nav__brand" href="#topo" data-go="topo">Solar do Engenho</a>
+  <nav class="nav__links" aria-label="Seções">
+    <a href="#o-dia" data-go="dia" data-tab="dia">O dia</a>
+    <a href="#atracoes" data-go="atracoes" data-tab="atracoes">Atrações</a>
+    <a href="#onde" data-go="onde" data-tab="onde">Onde fica</a>
+    <a href="#ingresso" data-go="ingresso" data-tab="ingresso">Ingresso</a>
+  </nav>
+  <a class="nav__buy lnk" href="https://ingressos.solardoengenhodayuse.com.br/day-use-solar-do-engenho" data-checkout>Comprar ingresso<svg aria-hidden="true"><use href="#i-out"></use></svg></a>
+</header>
+
+<p class="serial" aria-hidden="true">BR-040 · Km 480 · Sete Lagoas, MG</p>
+
+<main id="topo">
+
+  <!-- 1 · O dia: o vídeo vira uma janela e, nela, passam as atrações -->
+  <section class="dia" aria-label="Solar do Engenho" data-dia>
+    <div class="dia__video" data-hero-media>
+      <picture class="dia__poster">
+        <source media="(max-width: 699px)" srcset="assets/img/hero-poster-m.webp">
+        <img src="assets/img/hero-poster.webp" width="1600" height="900" alt="" fetchpriority="high">
+      </picture>
+      <video class="dia__vid" data-video data-desktop="assets/video/hero-desktop" data-mobile="assets/video/hero-mobile" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+      <i class="dia__scrim" aria-hidden="true" data-scrim></i>
+    </div>
+    <div class="dia__win" aria-hidden="true" data-win></div>
+
+    <div class="hero" data-st="0">
+      <div class="hero__main">
+        <p class="lbl hero__k" data-line>Day use em Sete Lagoas, MG</p>
+        <h1 class="hero__h" data-split>Um dia de fazenda.<br> Uma mesa farta.<br> Sua família mais perto.</h1>
+      </div>
+      <div class="hero__card" data-card>
+        <p class="hero__lead">Café da manhã, almoço no fogão a lenha, doces, sorvete, bebidas não alcoólicas e nove atrações. Tudo no mesmo ingresso.</p>
+        <div class="hero__price">
+          <span class="lbl">A partir de</span>
+          <b>R$ <span data-price>89,90</span></b>
+          <span class="lbl">por pessoa</span>
+        </div>
+        <p class="hero__kids">Crianças até 10 anos não pagam.</p>
+        <a class="btn" href="https://ingressos.solardoengenhodayuse.com.br/day-use-solar-do-engenho" data-checkout data-magnetic><span>Quero meu dia na fazenda</span><svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+        <p class="lbl hero__when">Sábados, domingos e feriados · Das 8h às 17h</p>
+      </div>
+      <button class="vtoggle" type="button" data-video-toggle hidden><svg aria-hidden="true"><use href="#i-pause"></use></svg><span>Pausar vídeo</span></button>
+    </div>
+
+    <div class="st" id="o-dia" data-st="1">
+      <div class="st__a">
+        <p class="lbl" data-line>O dia</p>
+        <h2 class="h2" data-split>Você escolhe a companhia. O dia já está pronto.</h2>
+      </div>
+      <div class="st__b">
+        <p class="bl" data-split>Troque a correria por um dia entre lagos, palmeiras e sabores de fazenda. Chegue para o café, aproveite as atrações e reúna todo mundo para o almoço. À tarde, tem espaço para brincar, se refrescar ou simplesmente aproveitar a companhia.</p>
+      </div>
+    </div>
+
+    <div class="st" id="atracoes" data-st="2">
+      <div class="st__a">
+        <p class="lbl" data-line>Nove atrações incluídas</p>
+        <h2 class="h2" data-split>Quem quer aventura, encontra. Quem quer sossego, também.</h2>
+      </div>
+      <div class="st__b">
+        <p class="bl" data-split>Um passeio para reunir a família sem precisar escolher entre a diversão das crianças e o descanso dos adultos. Cada um aproveita no seu ritmo, no mesmo lugar.</p>
+      </div>
+    </div>
+
+    <article class="st at" data-st="3">
+      <figure class="shot" data-shot>
+        <picture>
+          <source media="(max-width: 699px)" srcset="assets/img/at-tirolesa-720.webp">
+          <img src="assets/img/at-tirolesa-1200.webp" width="1200" height="1600" alt="Homem de capacete desce a tirolesa sob o céu azul, com as palmeiras lá embaixo." loading="lazy">
+        </picture>
+      </figure>
+      <div class="st__a">
+        <p class="lbl" data-line>Para sentir o dia lá fora</p>
+        <h3 class="at__n" data-split>Tirolesa</h3>
+      </div>
+      <div class="st__b">
+        <p class="lbl at__i" data-line>01 / 09</p>
+        <p class="bl" data-split>Veja a fazenda de outro ângulo, com o gramado e as palmeiras lá embaixo.</p>
+      </div>
+    </article>
+
+    <article class="st at" data-st="4">
+      <figure class="shot" data-shot>
+        <picture>
+          <source media="(max-width: 699px)" srcset="assets/img/at-cachoeira-720.webp">
+          <img src="assets/img/at-cachoeira-1200.webp" width="1200" height="1600" alt="Pai, mãe e filho se refrescam embaixo da queda d’água, ao lado da pedra." loading="lazy">
+        </picture>
+      </figure>
+      <div class="st__a">
+        <p class="lbl" data-line>Para sentir o dia lá fora</p>
+        <h3 class="at__n" data-split>Cachoeira e túnel</h3>
+      </div>
+      <div class="st__b">
+        <p class="lbl at__i" data-line>02 / 09</p>
+        <p class="bl" data-split>Uma parada para se refrescar na queda d’água e conhecer o túnel de pedra ao lado.</p>
+      </div>
+    </article>
+
+    <article class="st at" data-st="5">
+      <figure class="shot" data-shot>
+        <picture>
+          <source media="(max-width: 699px)" srcset="assets/img/at-pescaria-720.webp">
+          <img src="assets/img/at-pescaria-1200.webp" width="1200" height="1600" alt="Pai e filho pescam sentados no gramado, de frente para o lago." loading="lazy">
+        </picture>
+      </figure>
+      <div class="st__a">
+        <p class="lbl" data-line>Para sentir o dia lá fora</p>
+        <h3 class="at__n" data-split>Pescaria</h3>
+      </div>
+      <div class="st__b">
+        <p class="lbl at__i" data-line>03 / 09</p>
+        <p class="bl" data-split>Vara na mão, lago à frente e tempo para aproveitar a conversa.</p>
+      </div>
+    </article>
+
+    <div class="list" data-list>
+      <div class="list__side" aria-hidden="true" data-list-side>
+        <p class="lbl list__sg" data-side-g>Para a energia dos pequenos</p>
+        <p class="lbl list__si" data-side-i>04 / 09</p>
+        <p class="bl list__sd" data-side-d></p>
+      </div>
+      <div class="list__track" data-track>
+      <div class="list__g">
+        <p class="lbl list__gl">Para a energia dos pequenos</p>
+        <ol class="list__ol" start="4">
+          <li class="list__li" data-li data-g="Para a energia dos pequenos"><span class="list__no">04</span><h3 class="list__n">Tirolesa infantil</h3><p class="list__d">A aventura também tem espaço para as crianças.</p></li>
+          <li class="list__li" data-li data-g="Para a energia dos pequenos"><span class="list__no">05</span><h3 class="list__n">Área kids</h3><p class="list__d">Um espaço de brincadeiras para o passeio render ainda mais sorrisos.</p></li>
+          <li class="list__li" data-li data-g="Para a energia dos pequenos"><span class="list__no">06</span><h3 class="list__n">Balanços</h3><p class="list__d">A brincadeira simples que sempre pede mais uma vez.</p></li>
+          <li class="list__li" data-li data-g="Para a energia dos pequenos"><span class="list__no">07</span><h3 class="list__n">Infláveis</h3><p class="list__d">Diversão para gastar energia e render boas histórias na volta.</p></li>
+        </ol>
+      </div>
+      <div class="list__g">
+        <p class="lbl list__gl">Para viver o clima da fazenda</p>
+        <ol class="list__ol" start="8">
+          <li class="list__li" data-li data-g="Para viver o clima da fazenda"><span class="list__no">08</span><h3 class="list__n">Fazendinha</h3><p class="list__d">Lhama, ovelhas e boi de pertinho: um encontro que desperta a curiosidade das crianças.</p></li>
+          <li class="list__li" data-li data-g="Para viver o clima da fazenda"><span class="list__no">09</span><h3 class="list__n">Cavalgada</h3><p class="list__d">Mais uma experiência para deixar o passeio com cara de dia no campo.</p></li>
+        </ol>
+      </div>
+      </div>
+    </div>
+
+    <div class="st st--end" data-st="end">
+      <div class="st__a">
+        <h2 class="h2 h2--big" data-split>Menos rotina. Mais histórias para contar.</h2>
+      </div>
+      <div class="st__b">
+        <p class="bl" data-split>As nove atrações fazem parte do ingresso. Você reúne sua turma e escolhe como quer aproveitar o dia.</p>
+        <p class="end__cta" data-line><a class="btn" href="https://ingressos.solardoengenhodayuse.com.br/day-use-solar-do-engenho" data-checkout data-magnetic><span>Quero viver esse dia</span><svg aria-hidden="true"><use href="#i-arrow"></use></svg></a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · Onde fica e o ingresso: a vista do fim de tarde, o passe girando e, no fim, aberto -->
+  <section class="lugar" id="onde" aria-labelledby="onde-h" data-lugar>
+    <div class="lugar__photo" data-lugar-photo>
+      <picture>
+        <source media="(max-width: 699px)" srcset="assets/img/lugar-m-900.webp">
+        <source media="(max-width: 1400px)" srcset="assets/img/lugar-1600.webp">
+        <img src="assets/img/lugar-2400.webp" width="2400" height="1340" alt="Vista aérea do Solar do Engenho no fim de tarde: os lagos, as palmeiras, o casarão e a rodovia ao fundo." loading="lazy" data-lugar-img>
+      </picture>
+      <i class="lugar__scrim" aria-hidden="true"></i>
+      <i class="lugar__veil" aria-hidden="true" data-veil></i>
+      <i class="lugar__spot" aria-hidden="true" data-spot></i>
+    </div>
+
+    <div class="st st--onde" data-lt="0">
+      <p class="lbl" data-line>Onde nos encontrar</p>
+      <h2 class="h1x" id="onde-h" data-split>Rodovia BR-040, km 480</h2>
+      <p class="bl" data-line>Sete Lagoas, Minas Gerais.</p>
+      <p class="links" data-line>
+        <a class="lnk" href="https://www.google.com/maps/search/?api=1&amp;query=Solar%20do%20Engenho%20Day%20Use%20Sete%20Lagoas">Abrir no Google Maps<svg aria-hidden="true"><use href="#i-out"></use></svg></a>
+        <a class="lnk" href="https://waze.com/ul?q=Solar%20do%20Engenho%20Day%20Use%20Sete%20Lagoas&amp;navigate=yes">Abrir no Waze<svg aria-hidden="true"><use href="#i-out"></use></svg></a>
+      </p>
+    </div>
+
+    <div class="st st--faq" data-lt="1">
+      <div class="st__a">
+        <h2 class="h2" data-split>Tudo claro para você vir.</h2>
+      </div>
+      <dl class="faq">
+        <div class="faq__q" data-line><dt class="lbl">Quando posso ir?</dt><dd>Sábados, domingos e feriados, das 8h às 17h. Venha cedo para aproveitar o café da manhã, servido até as 11h.</dd></div>
+        <div class="faq__q" data-line><dt class="lbl">Posso levar comida ou bebida?</dt><dd>Não é permitida a entrada com comidas ou bebidas.</dd></div>
+      </dl>
+    </div>
+
+    <div class="st st--offer" id="ingresso" data-lt="2">
+      <p class="lbl" data-line>Seu próximo passeio começa aqui</p>
+      <h2 class="h2" data-split>Um ingresso. Um dia inteiro para aproveitar.</h2>
+      <p class="bl" data-line>Refeições, sobremesas, bebidas não alcoólicas e nove atrações reunidas em um só passeio.</p>
+    </div>
+
+    <div class="slot" data-slot>
+      <div class="ticket is-static is-open" data-ticket role="group" aria-label="Ingresso do day use Solar do Engenho">
+        <div class="t-enter" data-enter><div class="t-tilt" data-tilt><div class="t-float" data-float><div class="t-spin" data-spin>
+
+          <div class="slab base">
+            <div class="face face--front inside-b" data-inside>
+              <div class="in-price">
+                <p class="in-l" data-reveal>A partir de</p>
+                <p class="price" data-reveal><small>R$</small><span data-price-num>89,90</span></p>
+                <p class="per" data-reveal>por pessoa · até 12x no cartão ou Pix</p>
+                <p class="kids" data-reveal>Crianças até 10 anos não pagam</p>
+                <a class="tbtn in-buy" data-reveal href="https://ingressos.solardoengenhodayuse.com.br/day-use-solar-do-engenho" data-checkout><span>Escolher minha data e comprar ingresso</span><svg aria-hidden="true"><use href="#i-out"></use></svg></a>
+              </div>
+              <div class="in-stub" data-reveal>
+                <p class="in-days">Sáb · Dom<br>Feriados</p>
+                <p class="in-hours">8h<small>às</small>17h</p>
+              </div>
+              <svg class="seal" viewBox="0 0 120 120" aria-hidden="true" data-seal>
+                <defs>
+                  <path id="seal-ring" d="M60 60m-41 0a41 41 0 1 1 82 0a41 41 0 1 1-82 0"/>
+                  <linearGradient id="seal-gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a6326"/><stop offset=".45" stop-color="#e2bd76"/><stop offset=".55" stop-color="#fbe9c2"/><stop offset="1" stop-color="#94692b"/></linearGradient>
+                </defs>
+                <circle cx="60" cy="60" r="58" fill="url(#seal-gold)"/>
+                <circle cx="60" cy="60" r="52.5" fill="none" stroke="#5c3f14" stroke-opacity=".45" stroke-width="1.1" stroke-dasharray="2 3"/>
+                <circle cx="60" cy="60" r="30" fill="none" stroke="#5c3f14" stroke-opacity=".5" stroke-width="1.1"/>
+                <text font-size="9.6" letter-spacing=".6" fill="#4e3410" fill-opacity=".85"><textPath href="#seal-ring" textLength="254" lengthAdjust="spacing">DAY USE · VÁLIDO · SOLAR DO ENGENHO ·</textPath></text>
+                <text x="60" y="57" text-anchor="middle" font-size="11" font-weight="500" fill="#4e3410" fill-opacity=".85">KM</text>
+                <text x="60" y="72" text-anchor="middle" font-size="15" font-weight="500" fill="#4e3410" fill-opacity=".85">480</text>
+              </svg>
+              <i class="shade shade--base" aria-hidden="true" data-shade-base></i>
+            </div>
+            <div class="face face--back map" aria-hidden="true">
+              <svg class="map__svg" viewBox="0 0 560 320" preserveAspectRatio="xMidYMid slice">
+                <path class="map__road" d="M-20 262 C 90 240, 150 196, 214 170 S 352 128, 412 92 S 520 30, 590 18"/>
+                <path class="map__road map__road--thin" d="M120 340 C 160 280, 196 222, 214 170"/>
+                <g class="map__ticks"><path d="M88 236l-6 -12M154 205l-6 -12M300 140l-5 -12M368 113l-5 -12M456 64l-5 -12"/></g>
+                <circle class="map__dot" cx="412" cy="92" r="6"/><circle class="map__ring" cx="412" cy="92" r="15"/>
+              </svg>
+              <p class="map__road-name">BR-040</p>
+              <p class="map__here"><b>Solar do Engenho</b><span>Km 480 · Sete Lagoas, MG</span></p>
+              <p class="map__corner">Day use · 8h às 17h</p>
+            </div>
+            <i class="edge edge--l" aria-hidden="true"></i><i class="edge edge--r" aria-hidden="true"></i><i class="edge edge--t" aria-hidden="true"></i><i class="edge edge--b" aria-hidden="true"></i>
+          </div>
+
+          <div class="slab lid" data-lid>
+            <div class="face face--front cover" aria-hidden="true">
+              <div class="cover__main">
+                <p class="cover__k">Day use</p>
+                <p class="cover__name foil">Solar do<br>Engenho</p>
+                <p class="cover__place">Sete Lagoas · Minas Gerais</p>
+              </div>
+              <div class="cover__stub">
+                <div class="cover__stub-in">
+                  <span class="cover__word">Ingresso</span>
+                  <span class="cover__no" data-serial>Nº 0427</span>
+                </div>
+              </div>
+              <i class="sheen" aria-hidden="true"></i>
+              <i class="shade shade--cover" aria-hidden="true" data-shade-cover></i>
+            </div>
+            <div class="face face--back inside-a" data-inside>
+              <p class="in-l" data-reveal>Da primeira xícara à sobremesa</p>
+              <ul class="menu">
+                <li data-reveal><p class="mi"><b>Café da manhã</b><span>8h às 11h</span></p><p class="md">Pães, bolos, ovos mexidos, canjica, leite, café e sucos.</p></li>
+                <li data-reveal><p class="mi"><b>Almoço no fogão a lenha</b><span>11h às 16h</span></p><p class="md">Arroz, feijoada, feijão tropeiro, farofa e batata frita.</p></li>
+                <li data-reveal><p class="mi"><b>Doces, sorvete e bebidas</b><span>Ao longo do dia</span></p><p class="md">Pudim, doces, sorvete e bebidas não alcoólicas.</p></li>
+              </ul>
+              <p class="in-more" data-reveal>+ Nove atrações incluídas</p>
+              <i class="shade shade--lid" aria-hidden="true" data-shade-lid></i>
+            </div>
+            <i class="edge edge--l" aria-hidden="true"></i><i class="edge edge--r" aria-hidden="true"></i><i class="edge edge--t" aria-hidden="true"></i><i class="edge edge--b" aria-hidden="true"></i>
+          </div>
+
+        </div></div></div></div>
+        <button class="ticket-hit" type="button" data-ticket-hit aria-label="Abrir o ingresso e ver o preço"></button>
+      </div>
+    </div>
+
+    <ul class="notes" data-notes>
+      <li><b>Crianças até 10 anos não pagam.</b> Mais um motivo para trazer os pequenos para um dia fora da rotina.</li>
+      <li><b>Aniversariante do mês tem entrada gratuita aos sábados.</b> Para aproveitar o benefício, venha com 3 acompanhantes pagantes.</li>
+      <li>Consulte o valor da data escolhida na página de compra.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer class="ft" data-ft>
+  <div class="ft__top">
+    <p class="lbl">Solar do Engenho · Sete Lagoas, MG</p>
+    <h2 class="h1x ft__h">Seu próximo dia de fazenda é aqui.</h2>
+    <a class="btn" href="https://ingressos.solardoengenhodayuse.com.br/day-use-solar-do-engenho" data-checkout data-magnetic><span>Comprar meu ingresso</span><svg aria-hidden="true"><use href="#i-arrow"></use></svg></a>
+  </div>
+  <div class="ft__grid">
+    <div><p class="lbl">Onde</p><p>Rodovia BR-040, km 480<br>Sete Lagoas, Minas Gerais</p></div>
+    <div><p class="lbl">Quando</p><p>Sábados, domingos e feriados<br>Das 8h às 17h</p></div>
+    <div><p class="lbl">Contato</p><p><a href="https://www.instagram.com/solardoengenhodayuse/">Instagram</a><br><a href="https://solardoengenho.zendesk.com/hc/pt-br">Central de ajuda</a><br><span class="mail">atendimento@<wbr>solardoengenhodayuse.com.br</span></p></div>
+  </div>
+  <p class="ft__word" aria-hidden="true" data-word>Solar do Engenho</p>
+  <div class="ft__base">
+    <span>© <span data-year>2026</span> Solar do Engenho</span>
+    <p class="ft__credit">Desenvolvido pela <b>none</b></p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/SplitText.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/CustomEase.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollToPlugin.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@14.1.0/dist/motion.js"></script>
+<script>
+/* Solar do Engenho · terra
+   Duas telas presas, com cenas encadeadas pela rolagem:
+   1. O dia: o vídeo de abertura encolhe até virar uma janela; nela passam a
+      tirolesa, a cachoeira e a pescaria; depois as outras seis atrações em lista.
+   2. Onde fica: a vista do fim de tarde escurece, o ingresso cai girando e, no
+      fim, para no centro e abre: cardápio, preço e o selo.
+   Edite o bloco SOLAR para atualizar preço e link de compra. */
+(() => {
+  'use strict';
+
+  const SOLAR = {
+    preco: 89.90,
+    checkout: 'https://ingressos.solardoengenhodayuse.com.br/day-use-solar-do-engenho'
+  };
+
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
+  const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
+  const num = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const root = document.documentElement;
+  const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+
+  root.lang = 'pt-BR';
+  $$('[data-price], [data-price-num]').forEach(e => { e.textContent = num.format(SOLAR.preco); });
+  $$('[data-checkout]').forEach(a => { a.href = SOLAR.checkout; a.target = '_blank'; a.rel = 'noopener'; });
+  $$('a[href^="https://"]:not([data-checkout])').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
+  $$('[data-year]').forEach(e => { e.textContent = String(new Date().getFullYear()); });
+  $$('[data-serial]').forEach(e => { e.textContent = 'Nº ' + String(1000 + Math.floor(Math.random() * 9000)); });
+
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* Vídeo: WebM quando o navegador toca, MP4 de reserva; vertical no celular */
+  const video = $('[data-video]');
+  const toggle = $('[data-video-toggle]');
+  const vid = { want: true, sync: () => {} };
+  if (video && !reduce) {
+    const small = matchMedia('(max-width: 699px)').matches;
+    const base = small ? video.dataset.mobile : video.dataset.desktop;
+    const webm = video.canPlayType('video/webm; codecs="vp9"');
+    let ready = false, inView = true, userPaused = false, last = null;
+    const label = () => {
+      if (!toggle) return;
+      const p = video.paused;
+      $('span', toggle).textContent = p ? 'Tocar vídeo' : 'Pausar vídeo';
+      $('use', toggle).setAttribute('href', p ? '#i-play' : '#i-pause');
+    };
+    vid.sync = force => {
+      if (!ready) return;
+      const should = inView && vid.want && !userPaused && !document.hidden;
+      if (should === last && !force) return;
+      last = should;
+      if (should) { const pr = video.play(); if (pr && pr.catch) pr.catch(() => {}); } else video.pause();
+    };
+    video.addEventListener('playing', () => { video.classList.add('is-playing'); if (toggle) toggle.hidden = false; }, { once: true });
+    video.addEventListener('play', label);
+    video.addEventListener('pause', label);
+    if (toggle) toggle.addEventListener('click', () => { userPaused = !video.paused; vid.sync(true); });
+    document.addEventListener('visibilitychange', () => vid.sync());
+    const boot = () => {
+      video.src = base + (webm ? '.webm' : '.mp4');
+      video.preload = 'auto';
+      ready = true;
+      if (!root.classList.contains('anim') && 'IntersectionObserver' in window) new IntersectionObserver(([e]) => { inView = e.isIntersecting; vid.sync(); }, { threshold: .02 }).observe(video);
+      vid.sync(true);
+    };
+    if (document.readyState === 'complete') setTimeout(boot, 60);
+    else addEventListener('load', () => setTimeout(boot, 60), { once: true });
+  }
+
+  /* Rodapé: o nome ocupa a largura toda (com ou sem animação) */
+  const word = $('[data-word]');
+  const fitWord = () => {
+    if (!word) return;
+    word.style.fontSize = '100px';
+    word.style.display = 'inline-block';
+    const w = word.offsetWidth;
+    word.style.display = '';
+    const cs = getComputedStyle(word.parentElement);
+    const cw = word.parentElement.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    word.style.fontSize = (100 * cw / Math.max(1, w) * .995).toFixed(2) + 'px';
+  };
+  fitWord();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitWord);
+  addEventListener('resize', fitWord);
+
+  /* Sem GSAP, com movimento reduzido ou em tela deitada e baixa: leitura simples */
+  const G = window.gsap, ST = window.ScrollTrigger;
+  const tooShort = innerHeight < 500 && innerWidth > innerHeight;
+  const still = () => { root.classList.remove('anim', 'm1', 'm2', 'm3'); window.__solar = true; };
+  if (reduce || tooShort || !G || !ST) { still(); return; }
+  try { setup(); window.__solar = true; } catch (err) { console.error(err); still(); }
+
+  function setup() {
+    root.classList.add('anim');
+    G.registerPlugin(ST);
+    ['SplitText', 'CustomEase', 'ScrollToPlugin'].forEach(k => { if (window[k]) G.registerPlugin(window[k]); });
+    ST.config({ ignoreMobileResize: true });
+    const SplitText = window.SplitText;
+    const M = window.Motion || null;
+    const CE = window.CustomEase;
+    const OUT = CE ? CE.create('out', '.23,1,.32,1') : 'expo.out';
+    const INOUT = CE ? CE.create('inOut', '.77,0,.175,1') : 'power4.inOut';
+    const SOFT = CE ? CE.create('soft', '.45,0,.2,1') : 'power2.inOut';
+
+    /* Rolagem suave com Lenis no mouse; no toque fica a nativa */
+    let lenis = null;
+    if (fine && window.Lenis) {
+      lenis = new window.Lenis({ lerp: .09, wheelMultiplier: 1, smoothWheel: true });
+      lenis.on('scroll', ST.update);
+      G.ticker.add(t => lenis.raf(t * 1000));
+      G.ticker.lagSmoothing(0);
+      window.__lenis = lenis;
+    }
+    const getY = () => window.scrollY;
+    const easeLong = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const easeShort = t => 1 - Math.pow(1 - t, 4);
+    let auto = null;
+    const stopAuto = () => { if (auto && auto.kill) auto.kill(); auto = null; };
+    const goTo = (y, dur, done) => {
+      stopAuto();
+      const d = dur || Math.min(2.4, .8 + Math.abs(y - getY()) / innerHeight * .16);
+      if (lenis) { lenis.scrollTo(y, { duration: d, easing: d > 1 ? easeLong : easeShort, force: true, onComplete: done }); return; }
+      if (window.ScrollToPlugin) auto = G.to(window, { scrollTo: { y, autoKill: true }, duration: d, ease: 'power3.inOut', onComplete: done });
+      else { window.scrollTo({ top: y, behavior: 'smooth' }); if (done) setTimeout(done, 900); }
+    };
+    ['wheel', 'touchstart'].forEach(ev => addEventListener(ev, stopAuto, { passive: true }));
+
+    const fontsReady = Promise.race([document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 2200))]);
+
+    /* ══ Geometria: a janela e as colunas ao lado dela ══ */
+    const Lx = {};
+    const layout = () => {
+      const W = innerWidth, H = innerHeight;
+      const g = clamp(W * .032, 16, 48), nav = W < 700 ? 56 : 64, gap = clamp(W * .03, 24, 56);
+      let mode, ww, wh, wx, wy, colw;
+      if (W >= 1100 && W > H * 1.05) {
+        mode = 3;
+        wh = Math.min((H - nav) * .8, 800); ww = wh * .75;
+        colw = (W - ww - 2 * g - 2 * gap) / 2;
+        if (colw < 300) { colw = 300; ww = W - 2 * g - 2 * gap - 600; wh = ww / .75; }
+        wx = (W - ww) / 2; wy = nav + (H - nav - wh) / 2;
+      } else if (W >= 700) {
+        mode = 2;
+        wh = Math.min((H - nav) * .78, (W * .44) / .75); ww = wh * .75;
+        wx = W - g - ww; wy = nav + (H - nav - wh) / 2;
+        colw = wx - g - gap;
+      } else {
+        mode = 1;
+        ww = W - 2 * g; wh = Math.min(H * .47, ww * 1.2); wx = g; wy = nav + 6;
+        colw = ww;
+      }
+      const lf = mode === 3 ? clamp(W * .045, 36, 84) : mode === 2 ? clamp(W * .062, 34, 60) : clamp(W * .088, 28, 40);
+      const lh = Math.round(lf * 1.12);
+      const lw = mode === 3 ? W - 2 * g - colw - gap : W - 2 * g;
+      Object.assign(Lx, { W, H, g, nav, gap, mode, ww, wh, wx, wy, colw, wb: H - (wy + wh), lf, lh });
+      root.classList.remove('m1', 'm2', 'm3');
+      root.classList.add('m' + mode);
+      const s = root.style;
+      [['--wx', wx], ['--wy', wy], ['--ww', ww], ['--wh', wh], ['--wb', H - wy - wh], ['--colw', colw], ['--gap', gap], ['--lf', lf], ['--lh', lh], ['--lw', lw]]
+        .forEach(([k, v]) => s.setProperty(k, v.toFixed(1) + 'px'));
+    };
+    layout();
+    /* recortes animados por números (o navegador resume "inset(a b a b)" e a interpolação de texto se perderia) */
+    const clip = (el, unit = 'px') => {
+      const c = { t: 0, r: 0, b: 0, l: 0, k: 0 };
+      c.paint = () => { el.style.clipPath = `inset(${c.t.toFixed(2)}${unit} ${c.r.toFixed(2)}${unit} ${c.b.toFixed(2)}${unit} ${c.l.toFixed(2)}${unit} round ${c.k.toFixed(1)}px)`; };
+      return c;
+    };
+    const winBox = () => ({ t: Lx.wy + 1, r: Lx.W - Lx.wx - Lx.ww + 1, b: Lx.H - Lx.wy - Lx.wh + 1, l: Lx.wx + 1, k: 11 });
+    const winShutBox = () => { const mid = Lx.wy + Lx.wh / 2; return { t: mid, r: Lx.W - Lx.wx - Lx.ww + 1, b: Lx.H - mid, l: Lx.wx + 1, k: 11 }; };
+    const vidScale = () => clamp(Math.max(Lx.wh / Lx.H, Lx.ww / Lx.W) * 1.04, .5, 1);
+    const winOrigin = () => `${(Lx.wx + Lx.ww / 2).toFixed(1)}px ${(Lx.wy + Lx.wh / 2).toFixed(1)}px`;
+
+    /* ══ Textos: cada cena tem o seu; entram por linhas e saem mais rápido ══ */
+    const splits = new Map();
+    const partsOf = st => {
+      if (!st.__parts) {
+        const lines = [];
+        $$('[data-split]', st).forEach(t => {
+          let s = splits.get(t);
+          if (!s && SplitText) { s = new SplitText(t, { type: 'lines', mask: 'lines', linesClass: 'ln', aria: /^H\d$/.test(t.tagName) ? 'auto' : 'none' }); splits.set(t, s); }
+          if (s) lines.push(...s.lines); else lines.push(t);
+        });
+        st.__parts = { lines, singles: $$('[data-line], [data-card], .vtoggle:not([hidden])', st).filter(x => !x.closest('[data-split]')) };
+      }
+      return st.__parts;
+    };
+    const showText = (st, delay = 0) => {
+      if (!st) return;
+      const p = partsOf(st);
+      if (st.__tl) st.__tl.kill();
+      const tl = st.__tl = G.timeline({ delay });
+      st.classList.add('is-on');
+      tl.set(st, { opacity: 1 }, 0);
+      if (p.lines.length) tl.fromTo(p.lines, { yPercent: 108 }, { yPercent: 0, duration: 1, ease: OUT, stagger: .06 }, 0);
+      if (p.singles.length) tl.fromTo(p.singles, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: .8, ease: OUT, stagger: .07 }, .08);
+    };
+    const hideText = (st, dir = 1) => {
+      if (!st) return;
+      const p = partsOf(st);
+      if (st.__tl) st.__tl.kill();
+      st.classList.remove('is-on');
+      const tl = st.__tl = G.timeline();
+      if (p.lines.length) tl.to(p.lines, { yPercent: dir > 0 ? -108 : 108, duration: .42, ease: 'power2.in', stagger: .018 }, 0);
+      if (p.singles.length) tl.to(p.singles, { opacity: 0, y: dir > 0 ? -10 : 10, duration: .3, ease: 'power2.in' }, 0);
+      tl.set(st, { opacity: 0 });
+    };
+    const resetHidden = st => { const p = partsOf(st); st.classList.remove('is-on'); G.set(st, { opacity: 0 }); if (p.lines.length) G.set(p.lines, { yPercent: 108 }); if (p.singles.length) G.set(p.singles, { opacity: 0 }); };
+
+    /* ══ 1 · O dia ══ */
+    const dia = $('[data-dia]');
+    const media = $('[data-hero-media]');
+    const poster = $('.dia__poster');
+    const scrim = $('[data-scrim]');
+    const win = $('[data-win]');
+    const hero = $('.hero', dia);
+    const list = $('[data-list]');
+    const track = $('[data-track]');
+    const lis = $$('[data-li]', list);
+    const side = { g: $('[data-side-g]'), i: $('[data-side-i]'), d: $('[data-side-d]') };
+    const shots = $$('.at', dia).map(a => { const f = $('[data-shot]', a); win.append(f); f.querySelector('img').loading = 'eager'; return f; });
+    const shotImgs = shots.map(f => $('img', f));
+
+    /* rótulos das cenas, em alturas de tela de rolagem */
+    const T = { s0: 0, s1: .95, s2: 1.6, s3: 2.35, s4: 3.1, s5: 3.85, l0: 4.6, step: .4, end: 0, total: 0 };
+    T.end = T.l0 + T.step * (lis.length - 1) + .7;
+    T.total = T.end + .25;
+    const scenes = [
+      { t: T.s0, el: hero, key: 'dia' },
+      { t: T.s1, el: $('[data-st="1"]'), key: 'dia' },
+      { t: T.s2, el: $('[data-st="2"]'), key: 'atracoes' },
+      { t: T.s3, el: $('[data-st="3"]'), key: 'atracoes' },
+      { t: T.s4, el: $('[data-st="4"]'), key: 'atracoes' },
+      { t: T.s5, el: $('[data-st="5"]'), key: 'atracoes' },
+      ...lis.map((li, k) => ({ t: T.l0 + T.step * k, li: k, key: 'atracoes' })),
+      { t: T.end, el: $('[data-st="end"]'), key: 'atracoes' }
+    ];
+
+    const diaTL = G.timeline({ paused: true, defaults: { ease: 'none' } });
+    /* o vídeo encolhe até a janela, quase sem cortar (escala calculada para cobrir a janela) */
+    const mc = clip(media);
+    diaTL.fromTo(mc, { t: 0, r: 0, b: 0, l: 0, k: 0 }, { t: () => winBox().t, r: () => winBox().r, b: () => winBox().b, l: () => winBox().l, k: 11, duration: T.s1, ease: SOFT, onUpdate: mc.paint }, 0);
+    diaTL.fromTo([video, poster], { scale: 1, transformOrigin: winOrigin }, { scale: vidScale, transformOrigin: winOrigin, duration: T.s1, ease: SOFT }, 0);
+    diaTL.fromTo(scrim, { opacity: 1 }, { opacity: 0, duration: T.s1 * .7 }, 0);
+    /* as três fotos sobem dentro da janela, uma sobre a outra */
+    shots.forEach((f, k) => {
+      const at = [T.s2, T.s3, T.s4][k], d = [T.s3, T.s4, T.s5][k] - at;
+      const fc = clip(f, '%');
+      diaTL.fromTo(fc, { t: 100 }, { t: 0, duration: d, ease: SOFT, onUpdate: fc.paint }, at);
+      diaTL.fromTo(shotImgs[k], { scale: 1.22, yPercent: 6 }, { scale: 1.04, yPercent: 0, duration: d, ease: SOFT }, at);
+      if (k < shots.length - 1) diaTL.fromTo(shotImgs[k], { scale: 1.04 }, { scale: 1.12, yPercent: -4, duration: d, immediateRender: false }, at + d);
+    });
+    /* a janela fecha como uma pálpebra e a lista entra */
+    const shutAt = T.s5 + .1, shutD = .5;
+    diaTL.fromTo(mc, { t: () => winBox().t, r: () => winBox().r, b: () => winBox().b, l: () => winBox().l, k: 11 },
+      { t: () => winShutBox().t, r: () => winShutBox().r, b: () => winShutBox().b, l: () => winShutBox().l, k: 11, duration: shutD, ease: 'power2.in', immediateRender: false, onUpdate: mc.paint }, shutAt);
+    const wc = clip(win, '%'); wc.k = 12;
+    diaTL.fromTo(wc, { t: 0, b: 0 }, { t: 50, b: 50, duration: shutD, ease: 'power2.in', onUpdate: wc.paint }, shutAt);
+    diaTL.fromTo(list, { opacity: 0 }, { opacity: 1, duration: .3 }, shutAt + shutD - .12);
+    const trackY = k => -(k + .5) * Lx.lh;
+    diaTL.fromTo(track, { y: () => trackY(0) + Lx.lh * 1.4 }, { y: () => trackY(0), duration: T.l0 - (shutAt + shutD - .12), ease: OUT }, shutAt + shutD - .12);
+    diaTL.fromTo(track, { y: () => trackY(0) }, { y: () => trackY(lis.length - 1), duration: T.step * (lis.length - 1), immediateRender: false }, T.l0);
+    diaTL.to(list, { opacity: 0, duration: .3 }, T.end - .5);
+    diaTL.to(track, { y: () => trackY(lis.length - 1) - Lx.lh * 1.2, duration: .45, ease: 'power2.in' }, T.end - .55);
+    diaTL.set({}, {}, T.total);
+
+    const pinDia = ST.create({
+      trigger: dia, start: 'top top', end: () => '+=' + Math.round(T.total * innerHeight), pin: true, anticipatePin: 1,
+      scrub: lenis ? true : .35, animation: diaTL, invalidateOnRefresh: true
+    });
+
+    /* ══ 2 · Onde fica e o ingresso ══ */
+    const lugar = $('[data-lugar]');
+    const lugarImg = $('[data-lugar-img]');
+    const veil = $('[data-veil]');
+    const spot = $('[data-spot]');
+    const lts = $$('[data-lt]', lugar);
+    const offerHead = $('[data-lt="2"]');
+    const notes = $('[data-notes]');
+    const slot = $('[data-slot]');
+    const ticket = $('[data-ticket]');
+    const lid = $('[data-lid]', ticket);
+    const enterEl = $('[data-enter]', ticket);
+    const tilt = $('[data-tilt]', ticket);
+    const float = $('[data-float]', ticket);
+    const spin = $('[data-spin]', ticket);
+    const insides = $$('[data-inside]', ticket);
+    const reveals = $$('[data-reveal]', ticket);
+    const hit = $('[data-ticket-hit]', ticket);
+    const priceEl = $('[data-price-num]', ticket);
+    const buy = $('.in-buy', ticket);
+    const seal = $('[data-seal]', ticket);
+    const shadeBase = $('[data-shade-base]', ticket), shadeLid = $('[data-shade-lid]', ticket), shadeCover = $('[data-shade-cover]', ticket);
+    lugarImg.loading = 'eager';
+
+    const U = { t0: 0, t1: 1.45, t2: 2.35, total: 2.85 };
+    const lscenes = [{ t: U.t0, el: lts[0], key: 'onde' }, { t: U.t1, el: lts[1], key: 'onde' }, { t: U.t2, el: lts[2], key: 'ingresso' }];
+
+    const stage = el('aside', 'stage');
+    stage.setAttribute('aria-label', 'Seu ingresso');
+    const shadow = el('div', 'ticket-shadow');
+    shadow.setAttribute('aria-hidden', 'true');
+    stage.append(shadow, ticket);
+    document.body.append(stage);
+    ticket.classList.remove('is-static', 'is-open');
+    let isOpen = false;
+    const setOpen = open => {
+      if (open === isOpen) return;
+      isOpen = open;
+      ticket.classList.toggle('is-open', open);
+      insides.forEach(f => { f.inert = !open; });
+      hit.hidden = open;
+      if (open) cursorOff();
+    };
+    insides.forEach(f => { f.inert = true; });
+
+    const TW = () => ticket.offsetWidth, TH = () => ticket.offsetHeight;
+    let wideMode = innerWidth > innerHeight * 1.1;
+    const measureSlot = () => {
+      const top = offerHead.offsetTop + Math.max(...$$('h2, p', offerHead).map(n => n.offsetTop + n.offsetHeight)) + 14;
+      const nb = notes.offsetHeight + 10;
+      lugar.style.setProperty('--slot-t', Math.round(top) + 'px');
+      lugar.style.setProperty('--slot-b', Math.round(nb) + 'px');
+    };
+    const slotCenter = () => slot.offsetTop + slot.offsetHeight / 2 - innerHeight / 2;
+    const ctaScale = () => {
+      const room = (slot.offsetHeight || innerHeight * .5) * .94;
+      const fit = wideMode ? Math.min(room / TH(), (innerWidth - 2 * Lx.g) / (2 * TW())) : Math.min(room / (2 * TH()), (innerWidth - 2 * Lx.g) / TW());
+      return clamp(fit, .42, Lx.mode === 3 ? clamp(innerWidth * .78 / (2 * TW()), 1, 1.2) : 1);
+    };
+    const spinScale = () => Lx.mode === 3 ? clamp(Math.min(Lx.ww * 1.18 / TW(), innerHeight * .4 / TH()), .5, 1) : clamp(Math.min(innerWidth * .82 / TW(), innerHeight * .3 / TH()), .45, 1);
+    const poses = {
+      off: () => ({ x: 0, y: -innerHeight * .95, scale: .62, rotationX: -36, rotationZ: 14 }),
+      spin: () => ({ x: 0, y: Lx.mode === 1 ? -innerHeight * .02 : innerHeight * .04, scale: spinScale(), rotationX: 10, rotationZ: -4 }),
+      cta: () => ({ x: 0, y: slotCenter(), scale: ctaScale(), rotationX: 0, rotationZ: 0 })
+    };
+
+    const lugarTL = G.timeline({ paused: true, defaults: { ease: 'none' } });
+    lugarTL.fromTo(lugarImg, { scale: 1.16 }, { scale: 1.02, duration: 1 }, 0);
+    lugarTL.fromTo(lugarImg, { scale: 1.02 }, { scale: .96, duration: .6, immediateRender: false }, 1);
+    lugarTL.fromTo(veil, { opacity: 0 }, { opacity: 1, duration: .5, ease: 'power1.inOut' }, .42);
+    lugarTL.fromTo(spot, { opacity: 0 }, { opacity: 1, duration: .6, ease: 'power1.inOut' }, .7);
+    lugarTL.set(ticket, { autoAlpha: 0 }, 0);
+    lugarTL.set(ticket, { autoAlpha: 1 }, .55);
+    lugarTL.fromTo(ticket, { x: 0, y: () => -innerHeight * .95, scale: .62, rotationX: -36, rotationZ: 14 }, { x: () => poses.spin().x, y: () => poses.spin().y, scale: spinScale, rotationX: 10, rotationZ: -4, duration: .75, ease: 'power3.out', immediateRender: false }, .55);
+    lugarTL.fromTo(ticket, { x: () => poses.spin().x, y: () => poses.spin().y, scale: spinScale, rotationX: 10, rotationZ: -4 },
+      { x: 0, y: slotCenter, scale: ctaScale, rotationX: 0, rotationZ: 0, duration: .8, ease: SOFT, immediateRender: false }, U.t2 - .8);
+    lugarTL.set({}, {}, U.total);
+    G.set(ticket, { ...poses.off(), autoAlpha: 0 });
+
+    const pinLugar = ST.create({
+      trigger: lugar, start: 'top top', end: () => '+=' + Math.round(U.total * innerHeight), pin: true, anticipatePin: 1,
+      scrub: lenis ? true : .35, animation: lugarTL, invalidateOnRefresh: true
+    });
+
+    /* giro no ar enquanto as perguntas estão na tela; no fim ele assenta de frente */
+    const spinner = { on: false };
+    const spinSettle = () => {
+      spinner.on = false;
+      const r = G.getProperty(spin, 'rotationY') || 0;
+      G.to(spin, { rotationY: Math.ceil((r - 30) / 360) * 360, duration: .9, ease: OUT, overwrite: 'auto' });
+    };
+
+    const price = { v: 0 };
+    const paintPrice = () => { priceEl.textContent = num.format(price.v); };
+    const openTL = G.timeline({ paused: true });
+    const buildOpen = () => {
+      const p = openTL.progress();
+      openTL.clear();
+      const L = wideMode ? { rotationY: -180, rotationX: 0 } : { rotationX: 180, rotationY: 0 };
+      const L1 = wideMode ? { rotationY: -184, rotationX: 0 } : { rotationX: 184, rotationY: 0 };
+      const lean = wideMode ? 8 : 5;
+      openTL
+        .fromTo(enterEl, { z: 0, rotationX: 0 }, { z: 56, rotationX: lean, duration: .5, ease: OUT }, 0)
+        .fromTo(lid, { rotationY: 0, rotationX: 0 }, { ...L1, duration: 1.1, ease: INOUT }, .22)
+        .fromTo(lid, L1, { ...L, duration: .55, ease: 'sine.inOut', immediateRender: false }, 1.32)
+        .fromTo(enterEl, { x: 0, y: 0 }, { x: wideMode ? TW() / 2 : 0, y: wideMode ? 0 : TH() / 2, duration: 1.2, ease: INOUT }, .22)
+        .fromTo(shadeCover, { opacity: 0 }, { opacity: .7, duration: .55, ease: 'power1.in' }, .22)
+        .fromTo(shadeBase, { opacity: 0 }, { opacity: .55, duration: .45, ease: 'power1.out' }, .3)
+        .to(shadeBase, { opacity: 0, duration: .65, ease: 'power2.out' }, .85)
+        .fromTo(shadeLid, { opacity: .7 }, { opacity: 0, duration: .75, ease: 'power2.out' }, .8)
+        .fromTo(reveals, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: .6, ease: OUT, stagger: .045 }, .62)
+        .fromTo(price, { v: 0 }, { v: SOLAR.preco, duration: 1.2, ease: 'power3.out', snap: { v: .01 }, onUpdate: paintPrice }, .85)
+        .fromTo(buy, { scale: .9 }, { scale: 1, duration: .8, ease: 'back.out(2)' }, 1.3)
+        .fromTo(enterEl, { z: 56, rotationX: lean }, { z: 0, rotationX: 0, duration: .8, ease: OUT, immediateRender: false }, 1.2)
+        .fromTo(seal, { scale: 2.4, opacity: 0, rotation: -40 }, { scale: 1, opacity: 1, rotation: -12, duration: .3, ease: 'power4.in' }, 1.62)
+        .fromTo(spin, { scale: 1 }, { scale: .975, duration: .06, ease: 'power2.out' }, 1.92)
+        .fromTo(spin, { scale: .975 }, { scale: 1, duration: .7, ease: 'elastic.out(1.1, .45)', immediateRender: false }, 1.98)
+        .fromTo(buy, { '--sw': '-130%' }, { '--sw': '130%', duration: .9, ease: 'power2.inOut' }, 2.05);
+      openTL.progress(p);
+    };
+    G.set(reveals, { opacity: 0 });
+    G.set([shadeBase, shadeLid, shadeCover], { opacity: 0 });
+    G.set(notes, { opacity: 0 });
+    window.__solarOpen = openTL;
+
+    const applyMode = () => {
+      wideMode = innerWidth > innerHeight * 1.1;
+      ticket.classList.toggle('is-wide', wideMode);
+      G.set(lid, { transformOrigin: wideMode ? '0% 50% 0px' : '50% 0% 0px' });
+      buildOpen();
+    };
+    applyMode();
+
+    /* ══ Cenas: qual está na tela, e a troca dos textos ══ */
+    let cur = -1, lcur = -1, opened = false;
+    G.set([hero, ...$$('.st', dia), ...lts], { opacity: 0 });
+    G.set(list, { opacity: 0 });
+    const nearest = (arr, t) => { let k = 0, d = Infinity; arr.forEach((s, i) => { const dd = Math.abs(s.t - t); if (dd < d) { d = dd; k = i; } }); return k; };
+    let sideK = -1;
+    const paintSide = k => {
+      if (k === sideK) return;
+      const first = sideK < 0;
+      sideK = k;
+      lis.forEach((li, i) => li.classList.toggle('is-on', i === k));
+      const li = lis[k];
+      const fill = () => {
+        side.g.textContent = li.dataset.g;
+        side.i.textContent = $('.list__no', li).textContent + ' / 09';
+        side.d.textContent = $('.list__d', li).textContent;
+      };
+      const parts = [side.g, side.i, side.d];
+      if (first) { fill(); G.fromTo(parts, { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0, duration: .6, ease: OUT, stagger: .05 }); return; }
+      G.to(parts, { autoAlpha: 0, filter: 'blur(4px)', duration: .16, ease: 'power1.in', overwrite: 'auto', onComplete: () => {
+        fill();
+        G.to(parts, { autoAlpha: 1, filter: 'blur(0px)', duration: .4, ease: OUT, stagger: .03 });
+      } });
+    };
+    let introDone = false;
+    const sceneAt = () => (getY() - pinDia.start) / innerHeight;
+    const updateDia = () => {
+      if (!introDone) return;
+      const t = sceneAt();
+      const k = nearest(scenes, t);
+      if (k === cur) return;
+      const prev = cur;
+      cur = k;
+      const dir = prev < 0 ? 1 : Math.sign(k - prev);
+      const a = prev >= 0 ? scenes[prev] : null, b = scenes[k];
+      if (a && a.el && a.el !== b.el) hideText(a.el, dir);
+      if (b.el && (!a || a.el !== b.el)) showText(b.el, a && a.el ? .22 : 0);
+      if (b.li != null) paintSide(b.li);
+    };
+    const updateLugar = () => {
+      const t = (getY() - pinLugar.start) / innerHeight;
+      if (t < -.5) {
+        if (lcur >= 0) { hideText(lscenes[lcur].el, -1); lcur = -1; }
+      } else {
+        const k = nearest(lscenes, Math.max(t, 0));
+        if (k !== lcur) {
+          const prev = lcur;
+          lcur = k;
+          if (prev >= 0) hideText(lscenes[prev].el, Math.sign(k - prev));
+          showText(lscenes[k].el, prev >= 0 ? .22 : 0);
+        }
+      }
+      /* o ingresso: gira nas perguntas, abre no fim */
+      const spinOn = t > .5 && t < U.t2 - .7;
+      if (spinOn !== spinner.on) { if (spinOn) spinner.on = true; else spinSettle(); }
+      if (!opened && t >= U.t2 - .08) {
+        opened = true; spinSettle();
+        openTL.timeScale(1).play();
+        G.to(notes, { opacity: 1, y: 0, duration: .8, ease: OUT, delay: 1.6, overwrite: 'auto' });
+      } else if (opened && t < U.t2 - .45) {
+        opened = false;
+        openTL.timeScale(1.8).reverse();
+        G.to(notes, { opacity: 0, duration: .25, overwrite: 'auto' });
+      }
+    };
+
+    /* ══ Abertura ══ */
+    const intro = $('[data-intro]');
+    const runIntro = () => {
+      const word = $('[data-intro-word]', intro);
+      const s = SplitText ? new SplitText(word, { type: 'chars', mask: 'chars', aria: 'none' }) : null;
+      if (lenis) lenis.stop();
+      root.style.overflow = 'hidden';
+      const done = () => {
+        if (introDone) return;
+        introDone = true;
+        root.style.overflow = '';
+        if (lenis) lenis.start();
+        intro.remove();
+        updateDia(); updateLugar();
+      };
+      const ic = clip(intro, '%');
+      const tl = G.timeline({ onComplete: done });
+      if (s) tl.from(s.chars, { yPercent: 110, duration: .9, ease: OUT, stagger: .028 }, .1);
+      tl.from('[data-intro-line]', { scaleX: 0, duration: 1, ease: INOUT }, .2)
+        .from('[data-intro-k]', { autoAlpha: 0, y: 8, duration: .6, ease: OUT }, .55)
+        .fromTo(ic, { b: 0 }, { b: 100, duration: .95, ease: INOUT, onUpdate: ic.paint }, 1.35)
+        .fromTo(media, { scale: 1.08 }, { scale: 1, duration: 1.6, ease: OUT, clearProps: 'scale' }, 1.35)
+        .add(() => { cur = 0; showText(hero); }, 1.75);
+      /* quem já está rolando não espera a abertura */
+      const skip = () => { if (!introDone && tl.progress() < .8) tl.progress(.8); };
+      addEventListener('wheel', skip, { passive: true, once: true });
+      addEventListener('touchstart', skip, { passive: true, once: true });
+      addEventListener('keydown', skip, { once: true });
+      /* se a página abriu no meio (recarregada), mostra a cena certa */
+      if (getY() > 4) { tl.progress(1); }
+    };
+
+    /* ══ Menu: seção atual e navegação ══ */
+    const tabs = $$('[data-tab]');
+    let active = null;
+    const which = () => {
+      const y = getY();
+      if (y >= pinLugar.start + (U.t2 - .45) * innerHeight) return 'ingresso';
+      if (y >= pinLugar.start - innerHeight * .4) return 'onde';
+      if (y >= pinDia.start + (T.s2 - .35) * innerHeight) return 'atracoes';
+      if (y >= pinDia.start + (T.s1 - .45) * innerHeight) return 'dia';
+      return null;
+    };
+    const setActive = key => {
+      if (key === active) return;
+      active = key;
+      tabs.forEach(a => { if (a.dataset.tab === key) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
+    };
+    const dest = {
+      topo: () => 0,
+      dia: () => pinDia.start + T.s1 * innerHeight,
+      atracoes: () => pinDia.start + T.s2 * innerHeight,
+      onde: () => pinLugar.start + 2,
+      ingresso: () => pinLugar.start + U.t2 * innerHeight + 2
+    };
+    $$('[data-go]').forEach(a => a.addEventListener('click', e => {
+      const key = a.dataset.go;
+      if (!dest[key]) return;
+      e.preventDefault();
+      const kb = e.detail === 0;
+      goTo(dest[key](), null, () => { if (key === 'ingresso' && kb) setTimeout(() => buy.focus({ preventScroll: true }), 2400); });
+    }));
+    hit.addEventListener('click', () => goTo(dest.ingresso()));
+
+    /* foco pelo teclado leva até a cena do elemento focado */
+    const sceneY = st => {
+      const k = scenes.findIndex(s => s.el === st);
+      if (k >= 0) return pinDia.start + scenes[k].t * innerHeight + 1;
+      const j = lscenes.findIndex(s => s.el === st);
+      return j >= 0 ? pinLugar.start + lscenes[j].t * innerHeight + 1 : null;
+    };
+    [...scenes.map(s => s.el), ...lts].filter(Boolean).forEach(st => st.addEventListener('focusin', () => {
+      const y = sceneY(st);
+      if (y != null && Math.abs(getY() - y) > innerHeight * .2) goTo(y, .9);
+    }));
+
+    /* encaixe: quando a rolagem para entre duas cenas, termina o gesto */
+    let lastDir = 0, lastNative = getY();
+    addEventListener('scroll', () => { const y = getY(); if (y !== lastNative) { lastDir = Math.sign(y - lastNative); lastNative = y; } }, { passive: true });
+    const snapIn = (pin, arr) => {
+      const y = getY();
+      if (y <= pin.start + 2 || y >= pin.end - 2) return false;
+      const t = (y - pin.start) / innerHeight;
+      let k = nearest(arr, t);
+      const s = arr[k];
+      if (Math.abs(s.t - t) < .015) return true;
+      if (lastDir > 0 && t > s.t + .1 && k < arr.length - 1) k++;
+      else if (lastDir < 0 && t < s.t - .1 && k > 0) k--;
+      const target = pin.start + arr[k].t * innerHeight + 1;
+      goTo(target, clamp(.45 + Math.abs(target - y) / innerHeight * .9, .45, 1.1));
+      return true;
+    };
+    ST.addEventListener('scrollEnd', () => {
+      if (auto || window.__solarNoSnap || !introDone) return;
+      if (!snapIn(pinDia, scenes.concat([{ t: T.total }]))) snapIn(pinLugar, lscenes.concat([{ t: U.total }]));
+    });
+
+    /* ══ Cursor com legenda e botões magnéticos (molas do Motion) ══ */
+    const cursor = el('div', 'cursor');
+    cursor.setAttribute('aria-hidden', 'true');
+    document.body.append(cursor);
+    let cursorText = '', cursorShown = false;
+    const spr = (stiffness, damping, mass = 1) => ({ type: 'spring', stiffness, damping, mass });
+    function cursorOn(text) {
+      if (!fine) return;
+      if (text !== cursorText) { cursor.textContent = text; cursorText = text; }
+      if (cursorShown) return;
+      cursorShown = true;
+      if (M) M.animate(cursor, { opacity: 1, scale: [.6, 1] }, spr(420, 30)); else G.to(cursor, { opacity: 1, scale: 1, duration: .3 });
+    }
+    function cursorOff() {
+      if (!cursorShown) return;
+      cursorShown = false;
+      if (M) M.animate(cursor, { opacity: 0, scale: .6 }, { duration: .16, ease: 'easeIn' }); else G.to(cursor, { opacity: 0, scale: .6, duration: .16 });
+    }
+    if (fine) {
+      addEventListener('pointermove', e => {
+        if (M) M.animate(cursor, { x: e.clientX, y: e.clientY }, spr(520, 38, .6));
+        else G.to(cursor, { x: e.clientX, y: e.clientY, duration: .3, ease: 'power3.out', overwrite: 'auto' });
+      }, { passive: true });
+      hit.addEventListener('pointerenter', () => cursorOn('Abrir'));
+      hit.addEventListener('pointerleave', cursorOff);
+      $$('[data-magnetic]').forEach(b => {
+        b.addEventListener('pointermove', e => {
+          const r = b.getBoundingClientRect();
+          const x = (e.clientX - (r.left + r.width / 2)) * .2, y = (e.clientY - (r.top + r.height / 2)) * .3;
+          if (M) M.animate(b, { x, y }, spr(300, 22)); else G.to(b, { x, y, duration: .4, ease: 'power3.out' });
+        });
+        b.addEventListener('pointerleave', () => { if (M) M.animate(b, { x: 0, y: 0 }, { type: 'spring', visualDuration: .5, bounce: .3 }); else G.to(b, { x: 0, y: 0, duration: .8, ease: 'elastic.out(1, .4)' }); });
+      });
+    }
+
+
+    /* ══ Recalcular tudo quando a tela muda ══ */
+    let lastSize = innerWidth + 'x' + innerHeight;
+    ST.addEventListener('refreshInit', () => { layout(); measureSlot(); });
+    ST.addEventListener('refresh', () => {
+      measureSlot();
+      const was = wideMode;
+      if ((innerWidth > innerHeight * 1.1) !== was) applyMode();
+      if (opened) openTL.progress(1);
+      fitWord();
+      const size = innerWidth + 'x' + innerHeight;
+      if (size === lastSize || !introDone) return;
+      lastSize = size;
+      /* a tela mudou de tamanho: os textos voltam a se dividir em linhas e a cena atual reaparece */
+      cur = -2; lcur = -1; sideK = -1;
+      const all = [hero, ...$$('.st', dia), ...lts];
+      all.forEach(st => { if (st.__tl) st.__tl.kill(); });
+      splits.forEach(s => s.revert()); splits.clear();
+      all.forEach(st => { st.__parts = null; resetHidden(st); });
+      updateDia(); updateLugar();
+    });
+
+    fontsReady.then(() => {
+      [hero, ...$$('.st', dia), ...lts].forEach(resetHidden);
+      fitWord();
+      if (word && SplitText) {
+        const s = new SplitText(word, { type: 'chars', mask: 'chars', aria: 'none' });
+        G.set(s.chars, { yPercent: 100 });
+        ST.create({ trigger: word, start: 'top 96%', once: true, onEnter: () => G.to(s.chars, { yPercent: 0, duration: 1.1, ease: OUT, stagger: .028 }) });
+      }
+      measureSlot();
+      ST.refresh();
+      runIntro();
+    });
+
+    /* ══ A cada quadro ══ */
+    let px = .5, py = .5, rx = 0, ry = 0, lastShine = -1;
+    if (fine) addEventListener('pointermove', e => { px = e.clientX / innerWidth; py = e.clientY / innerHeight; }, { passive: true });
+    G.ticker.add((time, dt) => {
+      updateDia();
+      updateLugar();
+      setActive(which());
+      const yy = getY(), vh = innerHeight;
+      const vw = yy < pinDia.start + (T.s5 + .62) * vh;
+      if (vw !== vid.want) { vid.want = vw; vid.sync(); }
+
+      /* o passe: flutua, inclina com o mouse, brilha e projeta sombra; sobe com a página no fim */
+      const extra = Math.max(0, yy - pinLugar.end);
+      stage.style.transform = extra ? `translate3d(0, ${(-extra).toFixed(1)}px, 0)` : '';
+      const op = parseFloat(G.getProperty(ticket, 'opacity')) || 0;
+      if (spinner.on) G.set(spin, { rotationY: (G.getProperty(spin, 'rotationY') || 0) + dt * .03 });
+      if (op <= 0) { if (shadow.style.opacity !== '0') shadow.style.opacity = '0'; return; }
+      const lr = wideMode ? -(G.getProperty(lid, 'rotationY') || 0) : (G.getProperty(lid, 'rotationX') || 0);
+      setOpen(lr > 95);
+      const k = isOpen ? .3 : 1;
+      const tx = fine ? -(py - .5) * 16 * k : Math.sin(time * .7) * 3;
+      const ty = fine ? (px - .5) * 22 * k : Math.sin(time * .55) * 5;
+      rx += (tx - rx) * .07; ry += (ty - ry) * .07;
+      G.set(tilt, { rotationX: rx, rotationY: ry });
+      G.set(float, { y: Math.sin(time * 1.4) * 6, rotationZ: Math.sin(time * 1.05) * .7 });
+      const E = (G.getProperty(spin, 'rotationY') || 0) + ry;
+      const shine = clamp(.5 + Math.sin(E * Math.PI / 180) * .4 + (px - .5) * .3, 0, 1);
+      if (Math.abs(shine - lastShine) > .003) { ticket.style.setProperty('--shine', shine.toFixed(3)); lastShine = shine; }
+      const s = G.getProperty(ticket, 'scale') || 1;
+      const x = (G.getProperty(ticket, 'x') || 0) + (G.getProperty(enterEl, 'x') || 0) * s;
+      const y = (G.getProperty(ticket, 'y') || 0) + (G.getProperty(enterEl, 'y') || 0) * s;
+      const lift = (G.getProperty(enterEl, 'z') || 0) / 56;
+      const fy = G.getProperty(float, 'y') || 0;
+      const lk = clamp(lr / 180, 0, 1);
+      const hh = wideMode ? TH() : TH() * (1 + lk);
+      shadow.style.transform = `translate(${x.toFixed(1)}px, ${(y + (hh / 2 + 54) * s).toFixed(1)}px) scale(${(s * (1 - fy / 160 - lift * .12) * (wideMode ? 1 + lk : 1)).toFixed(3)}, ${(s * .7).toFixed(3)})`;
+      shadow.style.opacity = (clamp(.7 * s, .2, .75) * op * (1 - lift * .3)).toFixed(3);
+    });
+
+    addEventListener('load', () => ST.refresh(), { once: true });
+  }
+})();
+
+</script>
+
+</body></html>
